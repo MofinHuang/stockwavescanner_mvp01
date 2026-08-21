@@ -1,0 +1,15 @@
+[Unit]
+Description=StockWaveScanner mobile dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=stockwave
+WorkingDirectory=/opt/StockWaveScanner
+EnvironmentFile=/opt/StockWaveScanner/.env
+ExecStart=/opt/StockWaveScanner/.venv/bin/uvicorn mvp01.app:app --host 127.0.0.1 --port 8000
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

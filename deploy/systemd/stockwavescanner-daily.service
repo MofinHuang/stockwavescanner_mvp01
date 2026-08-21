@@ -1,0 +1,11 @@
+[Unit]
+Description=StockWaveScanner daily data pipeline
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=stockwave
+WorkingDirectory=/opt/StockWaveScanner
+EnvironmentFile=/opt/StockWaveScanner/.env
+ExecStart=/opt/StockWaveScanner/.venv/bin/python scripts/run_daily_mvp.py
